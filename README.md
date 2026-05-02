@@ -21,6 +21,7 @@
 ## Install
 
 ```bash
+brew tap debraj-b/tap
 brew install kubedoctor
 ```
 
