@@ -27,7 +27,7 @@ archives:
 checksum:
   name_template: "checksums.txt"
 
-homebrew_casks:
+brews:
   - name: kubedoctor
     repository:
       owner: debraj-b
