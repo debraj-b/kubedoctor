@@ -1,0 +1,42 @@
+version: 2
+
+project_name: kubedoctor
+
+before:
+  hooks:
+    - go mod tidy
+
+builds:
+  - main: .
+    binary: kubedoctor
+    env:
+      - CGO_ENABLED=0
+    goos:
+      - darwin
+      - linux
+    goarch:
+      - amd64
+      - arm64
+    ldflags:
+      - -s -w
+
+archives:
+  - formats: [tar.gz]
+    name_template: "{{ .ProjectName }}_{{ .Os }}_{{ .Arch }}"
+
+checksum:
+  name_template: "checksums.txt"
+
+brews:
+  - name: kubedoctor
+    repository:
+      owner: debraj-b
+      name: homebrew-tap
+      token: "{{ .Env.HOMEBREW_TAP_TOKEN }}"
+    homepage: "https://github.com/debraj-b/kubedoctor"
+    description: "A fast CLI health checker for Kubernetes clusters"
+    license: "MIT"
+    install: |
+      bin.install "kubedoctor"
+    test: |
+      system "#{bin}/kubedoctor", "--help"

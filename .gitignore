@@ -1,0 +1,15 @@
+# Binary
+kubedoctor
+
+# Build artifacts
+dist/
+
+# Internal docs (not for public)
+INTERNALS.md
+
+# Benchmark command (local testing only, not part of public release)
+cmd/benchmark.go
+
+# Go
+*.test
+*.out
